@@ -1,0 +1,1009 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+            <!-- root -->
+        <script src="https://cdn.jsdelivr.net/gh/firebug/firebug-lite@firebug1.4/build/firebug-lite-debug.js"></script> 
+        <base href="https://cdn.jsdelivr.net/npm/codemirror@6.65.7/">
+        <link href="https://cdn.jsdelivr.net/npm/codemirror@5.4.0/doc/logo.svg" rel="shortcut icon">
+        <link href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="./lib/codemirror.css">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./lib/codemirror.js"></script>
+        <script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
+        <script src="https://unpkg.com/statistics.js@1.0.0/statistics.min.js"></script>
+        <title> Code Editor </title>
+            <!--Minifier section -->
+        <script src="https://cdn.jsdelivr.net/gh/estools/escodegen@1.3.3/escodegen.browser.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/jquery/esprima@1.0.0/demo/checkenv.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/jquery/esprima@1.2.5/test/3rdparty/esmangle.browser.js"></script>
+        <script src="https://unpkg.com/@babel/standalone@7.28.2/babel.js"></script>
+        <script src="https://unpkg.com/esprima@4.0.1/dist/esprima.js"></script>
+        <script src="https://unpkg.com/platform@1.3.6/platform.js"></script>
+            <!-- modes -->
+        <script src="./mode/clike/clike.min.js"> </script>
+        <script src="./mode/cobol/cobol.min.js"> </script>
+        <script src="./mode/coffeescript/coffeescript.min.js"> </script>
+        <script src="./mode/css/css.min.js"> </script>
+        <script src="./mode/fortran/fortran.min.js"> </script>
+        <script src="./mode/handlebars/handlebars.min.js"> </script>
+        <script src="./mode/htmlembedded/htmlembedded.min.js"> </script>
+        <script src="./mode/htmlmixed/htmlmixed.min.js"> </script>
+        <script src="./mode/http/http.min.js"> </script>
+        <script src="./mode/javascript/javascript.min.js"> </script>
+        <script src="./mode/markdown/markdown.min.js"> </script>
+        <script src="./mode/mathematica/mathematica.min.js"> </script>
+        <script src="./mode/pascal/pascal.min.js"> </script>
+        <script src="./mode/perl/perl.min.js"> </script>
+        <script src="./mode/powershell/powershell.min.js"> </script>
+        <script src="./mode/properties/properties.min.js"> </script>
+        <script src="./mode/pug/pug.min.js"> </script>
+        <script src="./mode/python/python.min.js"> </script>
+        <script src="./mode/sass/sass.min.js"> </script>
+        <script src="./mode/shell/shell.min.js"> </script>
+        <script src="./mode/sql/sql.min.js"> </script>
+        <script src="./mode/stylus/stylus.min.js"> </script>
+        <script src="./mode/vb/vb.min.js"> </script>
+        <script src="./mode/vbscript/vbscript.min.js"> </script>
+        <script src="./mode/xml/xml.min.js"> </script>
+        <script src="./mode/php/php.min.js"> </script>
+            <!-- addons -->
+        <link rel="stylesheet" href="./addon/dialog/dialog.css">
+        <link rel="stylesheet" href="./addon/fold/foldgutter.css">
+        <link rel="stylesheet" href="./addon/hint/show-hint.css">
+        <link rel="stylesheet" href="./addon/lint/lint.css">
+        <link rel="stylesheet" href="./addon/scroll/simplescrollbars.css">
+        <link rel="stylesheet" href="./addon/search/matchesonscrollbar.css">
+        <script src="../csslint@1.0.5/dist/csslint.min.js"> </script>
+        <script src="../jshint@2.13.6/dist/jshint.min.js"> </script>
+        <script src="../jsonlint@1.6.3/lib/jsonlint.min.js"> </script>
+        <script src="./addon/comment/comment.min.js"> </script>
+        <script src="./addon/comment/continuecomment.min.js"> </script>
+        <script src="./addon/dialog/dialog.min.js"> </script>
+        <script src="./addon/display/placeholder.min.js"></script>
+        <script src="./addon/edit/closebrackets.min.js"> </script>
+        <script src="./addon/edit/closetag.min.js"> </script>
+        <script src="./addon/edit/continuelist.min.js"> </script>
+        <script src="./addon/edit/matchbrackets.min.js"> </script>
+        <script src="./addon/edit/matchtags.min.js"> </script>
+        <script src="./addon/edit/trailingspace.min.js"> </script>
+        <script src="./addon/fold/brace-fold.min.js"> </script>
+        <script src="./addon/fold/comment-fold.min.js"> </script>
+        <script src="./addon/fold/foldcode.min.js"> </script>
+        <script src="./addon/fold/foldgutter.min.js"> </script>
+        <script src="./addon/fold/markdown-fold.min.js"> </script>
+        <script src="./addon/fold/xml-fold.min.js"> </script>
+        <script src="./addon/hint/anyword-hint.min.js"> </script>
+        <script src="./addon/hint/css-hint.min.js"> </script>
+        <script src="./addon/hint/html-hint.min.js"> </script>
+        <script src="./addon/hint/javascript-hint.min.js"> </script>
+        <script src="./addon/hint/show-hint.min.js"> </script>
+        <script src="./addon/hint/sql-hint.min.js"> </script>
+        <script src="./addon/hint/xml-hint.min.js"> </script>
+        <script src="./addon/lint/coffeescript-lint.min.js"> </script>
+        <script src="./addon/lint/css-lint.min.js"> </script>
+        <script src="./addon/lint/javascript-lint.min.js"> </script>
+        <script src="./addon/lint/json-lint.min.js"> </script>
+        <script src="./addon/lint/lint.min.js"> </script>
+        <script src="./addon/scroll/annotatescrollbar.min.js"> </script>
+        <script src="./addon/scroll/simplescrollbars.min.js"> </script>
+        <script src="./addon/search/jump-to-line.min.js"> </script>
+        <script src="./addon/search/match-highlighter.min.js"> </script>
+        <script src="./addon/search/matchesonscrollbar.min.js"> </script>
+        <script src="./addon/search/search.min.js"> </script>
+        <script src="./addon/search/searchcursor.min.js"> </script>
+        <script src="./addon/selection/active-line.min.js"> </script>
+        <script src="./keymap/sublime.min.js"> </script>
+        <script src="https://cdn.jsdelivr.net/npm/codemirror@2.33.0/lib/util/formatting.min.js"> </script>
+            <!-- themes -->
+        <link rel="stylesheet" href="./theme/3024-day.css">
+        <link rel="stylesheet" href="./theme/3024-night.css">
+        <link rel="stylesheet" href="./theme/abbott.css">
+        <link rel="stylesheet" href="./theme/abcdef.css">
+        <link rel="stylesheet" href="./theme/ambiance-mobile.css">
+        <link rel="stylesheet" href="./theme/ambiance.css">
+        <link rel="stylesheet" href="./theme/ayu-dark.css">
+        <link rel="stylesheet" href="./theme/ayu-mirage.css">
+        <link rel="stylesheet" href="./theme/base16-dark.css">
+        <link rel="stylesheet" href="./theme/base16-light.css">
+        <link rel="stylesheet" href="./theme/bespin.css">
+        <link rel="stylesheet" href="./theme/blackboard.css">
+        <link rel="stylesheet" href="./theme/cobalt.css">
+        <link rel="stylesheet" href="./theme/colorforth.css">
+        <link rel="stylesheet" href="./theme/darcula.css">
+        <link rel="stylesheet" href="./theme/dracula.css">
+        <link rel="stylesheet" href="./theme/duotone-dark.css">
+        <link rel="stylesheet" href="./theme/duotone-light.css">
+        <link rel="stylesheet" href="./theme/eclipse.css">
+        <link rel="stylesheet" href="./theme/elegant.css">
+        <link rel="stylesheet" href="./theme/erlang-dark.css">
+        <link rel="stylesheet" href="./theme/gruvbox-dark.css">
+        <link rel="stylesheet" href="./theme/hopscotch.css">
+        <link rel="stylesheet" href="./theme/icecoder.css">
+        <link rel="stylesheet" href="./theme/idea.css">
+        <link rel="stylesheet" href="./theme/isotope.css">
+        <link rel="stylesheet" href="./theme/juejin.css">
+        <link rel="stylesheet" href="./theme/lesser-dark.css">
+        <link rel="stylesheet" href="./theme/liquibyte.css">
+        <link rel="stylesheet" href="./theme/lucario.css">
+        <link rel="stylesheet" href="./theme/material-darker.css">
+        <link rel="stylesheet" href="./theme/material-ocean.css">
+        <link rel="stylesheet" href="./theme/material-palenight.css">
+        <link rel="stylesheet" href="./theme/material.css">
+        <link rel="stylesheet" href="./theme/mbo.css">
+        <link rel="stylesheet" href="./theme/mdn-like.css">
+        <link rel="stylesheet" href="./theme/midnight.css">
+        <link rel="stylesheet" href="./theme/monokai.css">
+        <link rel="stylesheet" href="./theme/moxer.css">
+        <link rel="stylesheet" href="./theme/neat.css">
+        <link rel="stylesheet" href="./theme/neo.css">
+        <link rel="stylesheet" href="./theme/night.css">
+        <link rel="stylesheet" href="./theme/nord.css">
+        <link rel="stylesheet" href="./theme/oceanic-next.css">
+        <link rel="stylesheet" href="./theme/panda-syntax.css">
+        <link rel="stylesheet" href="./theme/paraiso-dark.css">
+        <link rel="stylesheet" href="./theme/paraiso-light.css">
+        <link rel="stylesheet" href="./theme/pastel-on-dark.css">
+        <link rel="stylesheet" href="./theme/railscasts.css">
+        <link rel="stylesheet" href="./theme/rubyblue.css">
+        <link rel="stylesheet" href="./theme/seti.css">
+        <link rel="stylesheet" href="./theme/shadowfox.css">
+        <link rel="stylesheet" href="./theme/solarized.css">
+        <link rel="stylesheet" href="./theme/ssms.css">
+        <link rel="stylesheet" href="./theme/the-matrix.css">
+        <link rel="stylesheet" href="./theme/tomorrow-night-bright.css">
+        <link rel="stylesheet" href="./theme/tomorrow-night-eighties.css">
+        <link rel="stylesheet" href="./theme/ttcn.css">
+        <link rel="stylesheet" href="./theme/twilight.css">
+        <link rel="stylesheet" href="./theme/vibrant-ink.css">
+        <link rel="stylesheet" href="./theme/xq-dark.css">
+        <link rel="stylesheet" href="./theme/xq-light.css">
+        <link rel="stylesheet" href="./theme/yeti.css">
+        <link rel="stylesheet" href="./theme/yonce.css">
+        <link rel="stylesheet" href="./theme/zenburn.css">
+        <style>
+            .CodeMirror-overlayscroll-horizontal {
+                visibility: hidden;
+            }
+            .CodeMirror-overlayscroll-vertical div{
+                opacity: 80%;
+                width: 10px;
+                height: 30px;
+                border-radius: 5px;
+            }
+            .CodeMirror-activeline .CodeMirror-linenumber.CodeMirror-gutter-elt { 
+                border-right: 4px solid black;
+                padding-left: 0;
+                color: red;
+                font-size: 1.1em;
+            }
+            .CodeMirror, #preview { 
+               width: calc(100% - 70px); 
+               height: calc(100% - 70px);
+               border: 1px solid black;
+               position: fixed;
+               top: 35px;
+               left: 35px;
+            }
+            .interface {
+/*                 color: white; */
+            }
+            .btn {
+                width: 64px;
+                height: 22px;
+                color: black;
+            }
+            .notepad {
+                color: white;
+                z-index: 2;
+             }
+            .output {
+                padding: 0;
+                margin: 0;
+                z-index: -500;
+            }
+            .flexed {
+                display: flex;
+                justify-content: space-between;
+            }
+            body {
+               background: black;
+               padding: 0;
+               margin: 0;
+               overflow: hidden;
+            }
+            button, select, summary {
+                cursor: pointer;
+            }
+            button:hover {
+                color: red;
+                background: darkgrey;
+            }
+            summary:hover, select:hover {
+                color: red;
+            }
+            canvas {
+               animation: bg-hue 50s linear infinite;
+               overflow: null; 
+            }
+            iframe {
+                background: silver;
+/*                 opacity: 95%; */
+            }
+            textarea {
+                font-size: 1em;
+                width: 400px;
+                height: 300px;
+                position: fixed;
+                top: 45px;
+                right: 5px;
+                z-index: 2;                
+            }
+            summary {
+                list-style-type: none;
+/*                 font-family: 'Font Awesome 6 Pro Regular'; */
+                font-size: 1.5em;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+            }
+            topnav {
+                position: fixed;
+                top: 5px;
+                left: 5px;
+                width: 95%;
+            }
+            bottomnav {
+                position: fixed;
+                bottom: 8px;
+                left: 5px;
+                width: 95%;
+            }
+            #fileInput {
+                width: 85px;
+            }
+            @keyframes bg-hue {
+                0%{
+                    filter:hue-rotate(0deg)}
+                50%{
+                    filter:hue-rotate(360deg)}
+                to{
+                    filter:hue-rotate(0deg)}
+            }
+            @media screen and (max-width: 683px) {
+                .interface {
+                    margin-left: 5px;
+                    font-size: 60%;
+                }
+                .btn {
+                    width: 50px;
+                    height: 22px;
+                }
+            }
+            #mfc,#mop {
+                color:white!important;
+                z-index:9999!important;
+            }
+            #babel, #btn1, #minify {
+                visibility: hidden;
+            }
+            #info {
+                position:absolute;
+                color:white;
+                bottom:10%;
+                left:50%;
+                visibility: hidden;
+                z-index:9999;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="matrix" class="output"></div>
+        <topnav>
+            <div class="flexed">
+                <button class="new" onclick="newDoc()" class="interface">
+                    New Site
+                </button>
+                <button class="editor" onclick="clrCode()" class="interface">
+                    Clear Code
+                </button>
+                <button id="smpChk" onclick="sampCode()" class="interface">
+                    Sample Code
+                </button>
+                <button id="saveFile" class="interface"> Save File </button>
+                <input id="fileInput" type="file" onchange="uploadAndReadFile(this.files)" class="interface">
+                <button id="babel" onclick="fixCode()" class="interface">Babel</button>
+                <label style="color: white;">Load URL<input autofocus="autofocus" onchange="addEl()" type="url" class="inputText"></label>
+            </div>
+        </topnav>
+        <details id="notepad" class="notepad">
+                    <summary id="summary">&#x1f4cc;</summary>
+                    <textarea placeholder="leave notes here" name="jaxValue2" wrap="true"></textarea>
+                </details>
+        <div id="text">
+            <div id="code" name="code" placeholder="Code goes here..."></div>
+        </div>
+        <iframe id="preview" hidden=""></iframe>
+        <bottomnav id="navBar">
+            <div class="flexed">
+                <button id="btn" class="interface btn" onclick="checker()">Preview</button>
+                <button class="interface btn" onclick="autoFormatSelection()">Format</button>
+              			  <button id="btn1" class="interface btn" onclick="eval(editor.getValue())">Run JS</button>
+                <button id="minify" class="interface btn" onclick="minify()">Minify</button>
+                <span class="interface"> Select a Mode
+                    <select id="mode" onchange="change()">
+                        <option> clike </option>
+                        <option> cobol </option>
+                        <option> coffeescript </option>
+                        <option> css </option>
+                        <option> fortran </option>
+                        <option> handlebars </option>
+                        <option> htmlembedded </option>
+                        <option selected=""> htmlmixed </option>
+                        <option> http </option>
+                        <option> javascript </option>
+                        <option> json </option>
+                        <option> less_test </option>
+                        <option> markdown </option>
+                        <option> mathematica </option>
+                        <option> pascal </option>
+                        <option> perl </option>
+                        <option> php </option>
+                        <option> powershell </option>
+                        <option> properties </option>
+                        <option> pug </option>
+                        <option> python </option>
+                        <option> sass </option>
+                        <option> scss_test </option>
+                        <option> shell </option>
+                        <option> sql </option>
+                        <option> stylus </option>
+                        <option> typescript </option>
+                        <option> vb </option>
+                        <option> vbscript </option>
+                        <option> xml </option>
+                    </select>
+                </span>
+                <span class="interface"> Select a theme:
+                    <select onchange="selectTheme()" id="select">
+                        <option> 3024-day </option>
+                        <option> 3024-night </option>
+                        <option> abbott </option>
+                        <option> abcdef </option>
+                        <option> ambiance-mobile </option>
+                        <option> ambiance </option>
+                        <option> ayu-dark </option>
+                        <option> ayu-mirage </option>
+                        <option> base16-dark </option>
+                        <option> base16-light </option>
+                        <option> bespin </option>
+                        <option> blackboard </option>
+                        <option> cobalt </option>
+                        <option> colorforth </option>
+                        <option> darcula </option>
+                        <option> dracula </option>
+                        <option> duotone-dark </option>
+                        <option> duotone-light </option>
+                        <option> eclipse </option>
+                        <option> elegant </option>
+                        <option> erlang-dark </option>
+                        <option> gruvbox-dark </option>
+                        <option> hopscotch </option>
+                        <option> icecoder </option>
+                        <option> idea </option>
+                        <option> isotope </option>
+                        <option> juejin </option>
+                        <option> lesser-dark </option>
+                        <option> liquibyte </option>
+                        <option> lucario </option>
+                        <option> material-darker </option>
+                        <option> material-ocean </option>
+                        <option> material-palenight </option>
+                        <option> material </option>
+                        <option selected=""> mbo </option>
+                        <option> mdn-like </option>
+                        <option> midnight </option>
+                        <option> monokai </option>
+                        <option> moxer </option>
+                        <option> neat </option>
+                        <option> neo </option>
+                        <option> night </option>
+                        <option> nord </option>
+                        <option> oceanic-next </option>
+                        <option> panda-syntax </option>
+                        <option> paraiso-dark </option>
+                        <option> paraiso-light </option>
+                        <option> pastel-on-dark </option>
+                        <option> railscasts </option>
+                        <option> rubyblue </option>
+                        <option> seti </option>
+                        <option> shadowfox </option>
+                        <option> solarized </option>
+                        <option> ssms </option>
+                        <option> the-matrix </option>
+                        <option> tomorrow-night-bright </option>
+                        <option> tomorrow-night-eighties </option>
+                        <option> ttcn </option>
+                        <option> twilight </option>
+                        <option> vibrant-ink </option>
+                        <option> xq-dark </option>
+                        <option> xq-light </option>
+                        <option> yeti </option>
+                        <option> yonce </option>
+                        <option> zenburn </option>
+                    </select>
+                </span>
+<!--                 <span class="interface"> Current mode:
+                    <span id="modeinfo" style="color: red">htmlmixed</span>
+                </span> -->
+            </div>
+        </bottomnav>
+        <div id="info" class="alert-box secondary"> Ready </div>
+        <span hidden id="mcb">
+            <label style="color: white; margin: 0; height: 22px"><input type="checkbox" id="mangle" class="btn" style="margin: 0;">Shorten variable names</label><br>
+            <label><input type="checkbox" id="remove-unreachable-branch" class="ocb">Remove unreachable branches</label><br>
+            <label><input type="checkbox" id="remove-unused-vars" class="ocb">Remove unused variable definitions</label><br>
+            <label><input type="checkbox" id="fold-constant" class="ocb">Fold (literal) constants</label><br>
+            <label><input type="checkbox" id="eliminate-dead-code" class="ocb">Eliminate dead code</label>
+        </span>
+        <textarea hidden="" id="newDoc"><!DOCTYPE html>
+<html>
+   <head>
+      <script src="https://cdn.jsdelivr.net/gh/firebug/firebug-lite@firebug1.4/build/firebug-lite-debug.js"></script>      
+      <link href="https://ka-p.fontawesome.com/releases/v7.2.0/css/pro.min.css?token=deda073a21" rel="stylesheet">
+      <link href="https://unpkg.com/animate.css/animate.min.css" rel="stylesheet">
+      <link href="https://unpkg.com/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+      <link href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="https://unpkg.com/jquery-ui/dist/themes/base/jquery-ui.min.css" rel="stylesheet">
+      <link rel="shortcut icon" href="">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+      <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+      <script src="https://unpkg.com/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://unpkg.com/jquery-ui/dist/jquery-ui.min.js"></script>
+      <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+      <style>
+          
+      </style>
+      <title>
+          
+      </title>
+   </head>
+   <body data-bs-theme="dark">
+       
+      <script>
+          
+      </script>
+      <script id="config"></script>
+      <script>
+          document.getElementById("config").setAttribute("src", document.URL.substring(0,document.URL.lastIndexOf("/")) + '/configfb.js');
+      </script>
+   </body>
+</html></textarea>
+        <script id="minifyScript">
+            function id(i) {
+                return document.getElementById(i);
+            }
+
+            function createPipeline() {
+                var passes, pipeline, inputs, i, el, optimizer;
+
+                passes = {
+                    'eliminate-dead-code': 'pass/dead-code-elimination',
+                    'fold-constant': 'pass/tree-based-constant-folding',
+                    'remove-unreachable-branch': 'pass/remove-unreachable-branch',
+                    'remove-unused-vars': 'pass/drop-variable-definition'
+                };
+
+                pipeline = [
+                    'pass/hoist-variable-to-arguments',
+                    'pass/transform-dynamic-to-static-property-access',
+                    'pass/transform-dynamic-to-static-property-definition',
+                    'pass/transform-immediate-function-call',
+                    'pass/transform-logical-association',
+                    'pass/reordering-function-declarations',
+                    'pass/remove-unused-label',
+                    'pass/remove-empty-statement',
+                    'pass/remove-wasted-blocks',
+                    'pass/transform-to-compound-assignment',
+                    'pass/transform-to-sequence-expression',
+                    'pass/transform-branch-to-expression',
+                    'pass/transform-typeof-undefined',
+                    'pass/reduce-sequence-expression',
+                    'pass/reduce-branch-jump',
+                    'pass/reduce-multiple-if-statements',
+                    'pass/dead-code-elimination',
+                    'pass/remove-side-effect-free-expressions',
+                    'pass/remove-context-sensitive-expressions',
+                    'pass/tree-based-constant-folding',
+                    'pass/drop-variable-definition',
+                    'pass/remove-unreachable-branch'
+                ];
+
+                inputs = document.getElementsByTagName('input');
+                for (i = 0; i < inputs.length; i += 1) {
+                    el = inputs[i];
+                    optimizer = passes[el.id];
+                    if (optimizer && el.checked === false) {
+                        pipeline.splice(pipeline.indexOf(optimizer), 1);
+                    }
+                }
+
+                pipeline = pipeline.map(window.esmangle.require);
+                pipeline = [pipeline];
+                pipeline.push({
+                    once: true,
+                    pass: [
+                        'post/transform-static-to-dynamic-property-access',
+                        'post/transform-infinity',
+                        'post/rewrite-boolean',
+                        'post/rewrite-conditional-expression'
+                    ].map(window.esmangle.require)
+                });
+
+                return pipeline;
+            }
+
+            function obfuscate(syntax) {
+                var result = window.esmangle.optimize(syntax, createPipeline());
+
+                if (id('mangle').checked) {
+                    result = window.esmangle.mangle(result);
+                }
+
+                return result;
+            }
+
+            function minify() {
+                var code, syntax, option, str, before, after;
+
+                if (typeof window.editor !== 'undefined') {
+                    code = window.editor.getValue();
+                } else {
+                    code = id('code').value;
+                }
+
+                option = {
+                    format: {
+                        indent: {
+                            style: ''
+                        },
+                        quotes: 'auto',
+                        compact: true
+                    }
+                };
+
+                str = '';
+
+                try {
+                    before = code.length;
+                    syntax = window.esprima.parse(code, { raw: true, loc: true });
+                    syntax = obfuscate(syntax);
+                    code = window.escodegen.generate(syntax, option);
+                    after = code.length;
+                    if (before > after) {
+                        str = 'No error. Minifying ' + before + ' bytes to ' + after + ' bytes.';
+                        sdif = Math.floor(after / before * 100) + '% ' + 'of original size.'
+                        window.editor.setValue(code);
+                    } else {
+                        str = 'Can not minify further, code is already optimized.';
+                    }
+                } catch (e) {
+                    window.editor.addErrorMarker(e.index, e.description);
+                    str = e.toString();
+                } finally {
+                    document.getElementById('info').innerHTML = str + '<br>' + sdif;
+                }
+            }
+
+            window.onload = function () {
+
+                id('minify').onclick = minify;
+
+                try {
+                       window.checkEnv();
+
+                    window.editor = CodeMirror(document.getElementById("code"), {
+                            allowDropFileTypes: ["htmlmixed", "javascript"],
+                            autoCloseBrackets: true,
+                            autoCloseTags: true,
+                            autocorrect: true,
+                            dragDrop: true,
+                            electricChars: true,
+                            extraKeys: {
+                                "Ctrl-Space": "autocomplete",
+                                "Ctrl-Q": function CtrlQ(cm) {
+                                    cm.foldCode(cm.getCursor());
+                                },
+                                "Ctrl-.": "unfoldAll",
+                                "Ctrl-,": "foldAll"
+                            },
+                            flattenSpans: false,
+                            foldGutter: true,
+                            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers", "breakpoints"],
+                            highlightSelectionMatches: {
+                                showToken: /\w/
+                            },
+                            indentUnit: 4,
+                            keyMap: "sublime",
+                            lineNumbers: true,
+                            lineWrapping: false,
+                            lint: true,
+                            matchBrackets: true,
+                            matchTags: {
+                                bothTags: true
+                            },
+                            mode: {name: 'htmlmixed', globalVars: true},
+                            scrollbarStyle: null,
+                            showCursorWhenSelecting: true,
+                            showTrailingSpace: true,
+                            smartIndent: true,
+                            styleActiveLine: true,
+                            styleSelectedText: true,
+                            theme: 'mbo',
+
+                    });
+
+                } catch (e) {
+                    id('codemirror').innerHTML = '';
+                } finally {
+                    id('testbox').parentNode.removeChild(id('testbox'));
+                }
+            };
+        </script>
+        <script>
+            "use strict";
+            // VARIABLE DECLARATIONS
+            var editor = CodeMirror(document.getElementById("code"), {
+                allowDropFileTypes: ["htmlmixed", "javascript"],
+                autoCloseBrackets: true,
+                autoCloseTags: true,
+                autocorrect: true,
+                dragDrop: true,
+                electricChars: true,
+                extraKeys: {
+                    "Ctrl-Space": "autocomplete",
+                    "Ctrl-Q": function CtrlQ(cm) {
+                        cm.foldCode(cm.getCursor());
+                    },
+                    "Ctrl-.": "unfoldAll",
+                    "Ctrl-,": "foldAll",
+                    "Ctrl-E": function() {clrCode();},
+                    "Ctrl-B": function() {checker();}
+                },
+                flattenSpans: false,
+                foldGutter: true,
+                gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers", "breakpoints"],
+                highlightSelectionMatches: {
+                    showToken: /\w/
+                },
+                indentUnit: 4,
+                keyMap: "sublime",
+                lineNumbers: true,
+                lineWrapping: false,
+                lint: true,
+                matchBrackets: true,
+                matchTags: {
+                    bothTags: true
+                },
+                mode: {name: 'htmlmixed', globalVars: true},
+                scrollbarStyle: "overlay",
+                showCursorWhenSelecting: true,
+                showTrailingSpace: true,
+                smartIndent: true,
+                styleActiveLine: true,
+                styleSelectedText: true,
+                theme: 'mbo',
+            });
+            var smpChk = document.getElementById("smpChk");
+            var cd = document.getElementById("code");
+            var charWidth = editor.defaultCharWidth(), basePadding = 4;
+            var txt = document.getElementById("text");
+            var prv = document.getElementById("preview");
+            var btn = document.getElementById("btn");
+            var modeInput = document.getElementById("mode");
+            var input = document.getElementById("select");
+            var dc = document.getElementById("notepad");
+            var sm = document.getElementById("summary");
+            // Matrix Background
+            var canvas = document.createElement("canvas");
+            var ctx = canvas.getContext("2d");
+            var colVal = [];
+            // Notes
+            var jaxValue2 = document.querySelector("textarea[name='jaxValue2']");
+            var savedValue2 = localStorage.getItem("lastVal2") || false;
+            // FUNCTIONS
+            function selectTheme() {
+                var theme = input.options[input.selectedIndex].innerHTML;
+                editor.setOption("theme", theme);
+            }
+            function updatePreview() {
+                var previewFrame = document.getElementById('preview');
+                var preview = previewFrame.contentDocument || previewFrame.contentWindow.document;
+                preview.open();
+                preview.write(editor.getValue());
+                preview.close();
+            }
+            function checker() {
+                if (prv.hidden) {
+                    prv.innerHTML = txt.value;
+                    updatePreview();
+                    btn.innerText = "Editor";
+                    txt.hidden = true;
+                    prv.hidden = null;
+                } else {
+                    btn.innerText = "Preview";
+                    prv.hidden = true;
+                    txt.hidden = null;
+                }
+            }
+            function change() {
+                var val = modeInput.value,
+                    m, mode, spec;
+                if (m = /.+\.([^.]+)$/.exec(val)) {
+                    var info = CodeMirror.findModeByExtension(m[1]);
+                    if (info) {
+                        mode = info.mode;
+                        spec = info.mime;
+                    }
+                } else if (/\//.test(val)) {
+                    var info = CodeMirror.findModeByMIME(val);
+                    if (info) {
+                        mode = info.mode;
+                        spec = val;
+                    }
+                } else {
+                    mode = spec = val;
+                }
+                if (mode) {
+                    editor.setOption("mode", spec);
+                    CodeMirror.autoLoadMode(editor, mode);
+                } else {
+                    alert("Could not find a mode corresponding to " + val);
+                }
+            }
+            function newDoc() {
+                var nd = document.getElementById("newDoc");
+                editor.setValue(nd.innerText);
+                editor.focus();
+            }
+            function clrCode() {
+                editor.setValue("");
+            }
+            function sampCode() {                
+                var test = $.get('https://cdn.jsdelivr.net/gh/codemirror/codemirror@5.65.21/mode/' + modeInput.value + '/index.html');
+                test.then(function() {
+                    var a = document.createElement("getter");
+                    a.innerHTML = test.responseText;
+                    var a = a.querySelector("textarea[name=code]").value;
+                    editor.setValue(a);
+                });
+                test.fail(function() {
+                    editor.setValue("This mode lacks a sample file");
+                });
+            }
+            function getSelectedRange() {
+              return { from: editor.getCursor(true), to: editor.getCursor(false) };
+            }
+            function autoFormatSelection() { 
+              var range = getSelectedRange();
+              editor.autoFormatRange(range.from, range.to);
+            }
+            function uploadAndReadFile(files) {
+                let fr = new FileReader();
+                fr.onload = function (e) { 
+                    editor.setValue(e.target.result);       
+                 };
+                fr.readAsText(files[0]);
+                editor.focus();
+                if(files[0].name.substring(files[0].name.lastIndexOf(".") + 1, files[0].name.lastIndexOf(".") + 4) == 'js') {
+                      modeInput.value = "javascript";
+                      infoVis();
+                      change();
+                }
+            }
+            function addEl() {
+              var al = document.querySelector(".inputText");
+              var scripts = $.get(al.value);
+              var x = al.value.lastIndexOf(".");
+              var vs = al.value.substring(x + 1, x + 4);
+              var bsp = al.value.substring(0, al.value.lastIndexOf("/"));
+              var st = document.URL.split("/")[5];
+              function endCode(){
+                  return [
+                      "",
+                     String('<script id="config"></script\>'),
+                     String('<script>  document.getElementById("config").setAttribute("src", document.URL.substring(0,document.URL.lastIndexOf("/")) + "/configfb.js"); </script\>'),
+                      // String("<script src='file://services/drp/student/" + st + "/documents/edovo/configfb.js'></script\>"),
+                  ].join('\n');
+              }
+			
+              if (vs == 'htm') {
+                  var brf = String("<script src='https://cdn.jsdelivr.net/gh/firebug/firebug-lite@firebug1.4/build/firebug-lite-debug.js'\></script\>\n<base href='" + bsp + "/'\>\n");
+                  modeInput.value = "htmlmixed";
+                  scripts.then(function () {
+                    editor.setValue(brf + scripts.responseText + endCode());
+                  });
+                  infoVis();
+                  change();
+              } else if (vs =="js") {
+                  modeInput.value = "javascript";
+                  scripts.then(function () {
+                    editor.setValue(scripts.responseText);
+                  });
+                  infoVis();
+                  change();
+              } else {
+                  scripts.then(function () {
+                    editor.setValue(scripts.responseText);
+                  });                   
+              }
+              editor.focus();
+            }
+            function fixCode() {
+                var xx = editor.getValue();
+                setTimeout(() => {
+                    try {
+                    var nfo2 = document.querySelector("#info")
+                    var xe = Babel.transform(xx, { presets: ["es2015-no-commonjs", "react", [ "stage-3", {decoratorsBeforeExport: false, }, ], ], }).code;
+                    } catch(ex) {
+                        nf02.innerHTML = "ERROR: " + ex.message;
+                    }
+                editor.setValue(xe);
+                }, 800);                
+            } 
+            function infoVis() {
+                var nfo = document.querySelector("#info");
+                var mbt = document.getElementById("minify");
+                var bab = document.getElementById("babel");
+                var btn1 = document.getElementById("btn1");
+                
+                if (modeInput.value == "javascript") {
+                    nfo.style.visibility = "visible";
+                    mbt.style.visibility = "visible";
+                    bab.style.visibility = "visible";
+                    btn1.style.visibility = "visible";
+                } else {
+                    nfo.style.visibility = "hidden";
+                    mbt.style.visibility = "hidden";
+                    bab.style.visibility = "hidden";
+                    btn1.style.visibility = "hidden";
+                };
+            }
+            function ver() {
+                var version, version2, el, el2;
+                
+                version = 'Using Espima version ' + espima.version + '\]n';
+                version += ' and Escodegen version ' + escodegen.version + '.';
+                
+                version2 = 'Babel- standalone version ' + Babel.version;
+                
+                if (typeof el.innerText === 'string') {
+                    el.innerText = version;
+                    el2.innerText = version2;
+                } else {
+                    el.textContent = version;
+                    el2.textContent = version2; 
+                }
+            }
+            // Matrix Background
+            function matrix() {
+                ctx.fillStyle = "rgba(0,0,0,.039)";
+            ctx.fillRect(0, 0, canvas.width * 10, canvas.height);
+                ctx.fillStyle = "green";
+                ctx.font = "12px 'Source Code Pro'"
+                colVal.map((posY, index) => {
+                   let output = Math.random()<0.5?0:1; 
+                   let posX = (index * 5);
+                   ctx.fillText(output, posX, posY);
+                   if (posY > 600 + Math.random() * canvas.height * 10) {
+                      colVal[index] = 0;
+                   } else {
+                      colVal[index] = posY + 10;
+                   }
+                });
+            } 
+            // FUNCTIONLESS COMMAND CALLS
+            editor.on("renderLine", function(cm, line, elt) {
+                var off = CodeMirror.countColumn(line.text, null, cm.getOption("tabSize")) * charWidth;
+                elt.style.textIndent = "-" + off + "px";
+                elt.style.paddingLeft = basePadding + off + "px";
+            });
+            CodeMirror.modeURL = "./mode/%N/%N.js";
+            CodeMirror.on(modeInput, "keypress", function(e) {
+                if (e.keyCode == 13) change();
+            });
+            setTimeout(() => {editor.focus(true);}, 200);
+            modeInput.addEventListener("change",() => {
+                var nfo = document.querySelector("#info");
+                var mbt = document.getElementById("minify");
+                var bab = document.getElementById("babel");
+                var btn1 = document.getElementById("btn1");
+                
+                if (modeInput.value == "javascript") {
+                    nfo.style.visibility = "visible";
+                    mbt.style.visibility = "visible";
+                    bab.style.visibility = "visible";
+                    btn1.style.visibility = "visible";
+                } else {
+                    nfo.style.visibility = "hidden";
+                    mbt.style.visibility = "hidden";
+                    bab.style.visibility = "hidden";
+                    btn1.style.visibility = "hidden";
+                };
+            });
+            // Matrix Background
+            canvas.setAttribute("width", window.innerWidth);
+            canvas.setAttribute("height", window.innerHeight * .995);
+            document.body.prepend(canvas);
+            for(let x=0;x<canvas.width;x++){ 
+            colVal.push(0);
+            }
+            setInterval(matrix, 40); 
+            // Notepad
+            jaxValue2.wrap = "true";
+            if (savedValue2) { 
+              let inputValue2 = new String(savedValue2);
+              jaxValue2.value = inputValue2;
+            }
+            jaxValue2.addEventListener("change", function (e) {
+              e.preventDefault();
+              var temp2 = new String(jaxValue2.value);
+              localStorage.setItem("lastVal2", temp2);
+            });
+            sm.addEventListener("click", function() {
+                if(dc.open === true){
+                    sm.style.transform = 'rotate(0deg)'
+                } else {
+                    sm.style.transform = 'rotate(-45deg)'
+                }
+            });
+            // NEW FUNCTIONALITY TEST AREA  
+        </script>
+        <script name="FileSaver" type="module">
+
+            var fln = document.querySelector("#fileInput");
+
+            import {
+                fileSave
+            }
+            from 'https://cdn.jsdelivr.net/gh/GoogleChromeLabs/browser-fs-access@0.38.0/src/index.js';
+            (async function saveFile() {
+                var sB = document.querySelector('#saveFile');
+                sB.addEventListener('click', async () => {                    
+
+                    try {
+                        var fln2 = fln.files[0].name;
+                    }
+                    catch (e) {
+                        var fln2 = "";
+                    };
+
+                    var blob = await new Blob([editor.getValue()], {
+                        type: "application/octet-stream"
+                    }
+                                             );
+                    try {
+                        await fileSave(blob, {
+                            fileName: `${fln2}`,
+                            extensions: ['.txt', '.html', '.css', '.md', '.js', '.svg', '.json'],
+                            startIn: 'music',
+                        }
+                                      );
+                    }
+                    catch (err) {
+                        if(err.name !== 'AbortError') {
+                            return console.error(err);
+                        }
+                    }
+                }
+                                   );
+            }
+            )();
+        </script>
+        <div id="loader"></div>
+        <script id="config" defer></script>
+        <script>
+            document.getElementById("config").setAttribute("src", document.URL.substring(0,document.URL.lastIndexOf("/")) + '/configfb.js');
+        </script>
+    </body>
+</html>
