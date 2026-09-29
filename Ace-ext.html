@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src='https://cdn.jsdelivr.net/gh/firebug/firebug-lite@firebug1.4/build/firebug-lite-debug.js'></script>
+        <base href='https://cdn.jsdelivr.net/gh/ajaxorg/ace-builds@1.15.3/'>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width,height=device-height" />
+        <title>Ace Kitchen Sink</title>
+        <link rel="stylesheet" href="./demo/kitchen-sink/styles.css" type="text/css" media="screen" charset="utf-8">
+<!--         <script async="true" src="https://use.edgefonts.net/source-code-pro.js"></script> -->
+        <link href="./demo/kitchen-sink/logo.png" rel="shortcut icon">
+    </head>
+    <body>
+        <div id="sidePanel" style="position:absolute;height:100%;">
+            <div class="toggleButton" id="optionToggle" role="button" aria-label="Hide Options" tabindex="0">
+                <div></div><div></div><div></div>
+            </div>
+            <div style="position: absolute; overflow: hidden; top:20px; bottom:0">
+                <div id="optionsPanel" style="width: 120%; height:100%; overflow-y: scroll">
+                </div>
+            </div>
+        </div>
+        <div id="editor-container"></div>
+        <script src="./src/ace.js" data-ace-base="src" type="text/javascript" charset="utf-8"></script>
+        <script src="./demo/kitchen-sink/demo.js"></script>
+        <script>
+            setTimeout(() => {
+              var a = document.getElementById("-enableLiveAutocompletion");
+              a.click();
+              var b = document.getElementById("-showPrintMargin");
+              b.click();
+              var c = document.getElementById("optionToggle");
+              c.click();
+              editor.execCommand("load");
+            }, 5);
+        </script> 
+        <script type="text/javascript" charset="utf-8">
+            ace.require("./demo/kitchen-sink/");
+        </script>
+       <script id="config"></script>
+        <script>
+            document.getElementById("config").setAttribute("src", document.URL.substring(0,document.URL.lastIndexOf("/")) + '/configfb.js');
+        </script>
+    </body>
+</html>
